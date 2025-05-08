@@ -9,6 +9,29 @@ import NeighborhoodSection from "@/components/NeighborhoodSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import RealScoutAdvancedSearch from "@/components/RealScoutAdvancedSearch";
 import { Container } from "@/components/ui/container";
+import { useEffect, useRef } from "react";
+
+const HomeValueWidget = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && containerRef.current) {
+      const homeValueElement = document.createElement("realscout-home-value");
+      homeValueElement.setAttribute("agent-encoded-id", "QWdlbnQtMjI1MDUw");
+      
+      containerRef.current.innerHTML = "";
+      containerRef.current.appendChild(homeValueElement);
+    }
+    
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.innerHTML = "";
+      }
+    };
+  }, []);
+
+  return <div ref={containerRef} className="w-full"></div>;
+};
 
 const Index = () => {
   return (
@@ -29,6 +52,19 @@ const Index = () => {
             agentEncodedId="QWdlbnQtMjI1MDUw"
             className="mt-4" 
           />
+        </Container>
+      </section>
+      <section className="py-12 bg-bhhs-cream">
+        <Container>
+          <div className="max-w-3xl mx-auto text-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-bhhs-navy mb-2">
+              What's Your Home Worth?
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Get an instant estimate of your home's current market value
+            </p>
+            <HomeValueWidget />
+          </div>
         </Container>
       </section>
       <EnhancedListingSection />
