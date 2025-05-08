@@ -64,7 +64,7 @@ const Header = () => {
             </a>
           ))}
           <Button variant="default" className="bg-bhhs-gold hover:bg-bhhs-darkGold text-white">
-            <Phone className="mr-2 h-4 w-4" /> (702) 555-8765
+            <Phone className="mr-2 h-4 w-4" /> (702) 500-1955
           </Button>
         </nav>
 
@@ -100,7 +100,7 @@ const Header = () => {
               </a>
             ))}
             <Button variant="default" className="w-full bg-bhhs-gold hover:bg-bhhs-darkGold text-white mt-4">
-              <Phone className="mr-2 h-4 w-4" /> (702) 555-8765
+              <Phone className="mr-2 h-4 w-4" /> (702) 500-1955
             </Button>
           </div>
         </div>

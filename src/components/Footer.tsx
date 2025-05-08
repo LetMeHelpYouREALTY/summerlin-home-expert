@@ -108,7 +108,7 @@ const Footer = () => {
                 Las Vegas, NV 89148
               </p>
               <p className="mb-3">
-                <span className="block">Phone: (702) 555-8765</span>
+                <span className="block">Phone: (702) 500-1955</span>
                 <span className="block">Email: drjanduffy@bhhs.com</span>
               </p>
             </address>
