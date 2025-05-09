@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -44,45 +43,43 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section className="py-20 bg-bhhs-navy text-white">
+    <section className="py-20 bg-gradient-to-b from-[#F7F9FC] to-[#e6ecf5] text-bhhs-navy">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="mb-2 inline-block">
-            <div className="px-4 py-1 bg-white/10 rounded-full">
-              <span className="text-bhhs-gold font-medium">Client Success Stories</span>
+            <div className="px-4 py-1 bg-[#3A8DDE]/10 rounded-full">
+              <span className="text-[#3A8DDE] font-medium">Client Success Stories</span>
             </div>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-bhhs-navy">
             What My Clients Say
           </h2>
-          <p className="text-white/80">
+          <p className="text-[#0A2540]">
             Real experiences from homeowners who've bought and sold in Summerlin with Dr. Jan Duffy
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto relative">
-          <Card className="bg-white/10 border-0 backdrop-blur-sm">
+          <Card className="bg-white border-0 shadow-lg">
             <CardContent className="p-8 md:p-12">
               <div className="flex flex-col items-center text-center">
-                <Quote className="h-12 w-12 text-bhhs-gold mb-6" />
-                
-                <p className="text-xl md:text-2xl mb-8 italic">
+                <Quote className="h-12 w-12 text-[#3A8DDE] mb-6" />
+                <p className="text-xl md:text-2xl mb-8 italic text-bhhs-navy">
                   "{testimonials[currentIndex].quote}"
                 </p>
-                
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full overflow-hidden mb-3 border-2 border-bhhs-gold">
+                  <div className="w-16 h-16 rounded-full overflow-hidden mb-3 border-2 border-[#3A8DDE]">
                     <img
                       src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].author}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h4 className="font-semibold text-lg">
+                  <h4 className="font-semibold text-lg text-bhhs-navy">
                     {testimonials[currentIndex].author}
                   </h4>
-                  <p className="text-white/70">
+                  <p className="text-[#3A8DDE]">
                     {testimonials[currentIndex].role}
                   </p>
                 </div>
@@ -94,7 +91,7 @@ const TestimonialSection = () => {
             <Button 
               variant="outline" 
               size="icon" 
-              className="rounded-full border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="rounded-full border-[#3A8DDE]/30 text-[#3A8DDE] hover:bg-[#3A8DDE]/10 hover:text-[#0A2540]"
               onClick={goToPrevious}
             >
               <ChevronLeft className="h-5 w-5" />
@@ -103,7 +100,7 @@ const TestimonialSection = () => {
             <Button 
               variant="outline" 
               size="icon" 
-              className="rounded-full border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="rounded-full border-[#3A8DDE]/30 text-[#3A8DDE] hover:bg-[#3A8DDE]/10 hover:text-[#0A2540]"
               onClick={goToNext}
             >
               <ChevronRight className="h-5 w-5" />

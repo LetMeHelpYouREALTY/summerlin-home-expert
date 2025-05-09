@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
@@ -33,7 +32,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-fade-in ${
         isScrolled
           ? "bg-white shadow-md py-2"
           : "bg-transparent py-4"
@@ -54,16 +53,20 @@ const Header = () => {
 
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
+          {navLinks.map((link, idx) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-bhhs-navy hover:text-bhhs-gold transition duration-200 font-medium"
+              className={`transition duration-200 font-medium ${
+                idx % 2 === 0
+                  ? 'text-[#3A8DDE] hover:text-[#0A2540]'
+                  : 'text-[#16B286] hover:text-[#0A2540]'
+              }`}
             >
               {link.name}
             </a>
           ))}
-          <Button variant="default" className="bg-bhhs-gold hover:bg-bhhs-darkGold text-white">
+          <Button variant="buyer" className="ml-4">
             <Phone className="mr-2 h-4 w-4" /> (702) 500-1955
           </Button>
         </nav>

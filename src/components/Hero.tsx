@@ -1,6 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import { WidgetContainer } from "@/components/WidgetContainer";
 
 const Hero = () => {
   return (
@@ -40,10 +40,12 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button className="bg-bhhs-gold hover:bg-bhhs-darkGold text-white px-6 py-6 text-lg w-full sm:w-auto">
-              View My Listings
-            </Button>
-            <Button variant="outline" className="bg-white/90 backdrop-blur-sm hover:bg-white text-bhhs-navy border-0 px-6 py-6 text-lg w-full sm:w-auto">
+            <a href="#my-listings">
+              <Button variant="buyer" className="px-6 py-6 text-lg w-full sm:w-auto animate-fade-in duration-700">
+                View My Listings
+              </Button>
+            </a>
+            <Button variant="outline" className="bg-white/90 backdrop-blur-sm hover:bg-white text-bhhs-navy border-0 px-6 py-6 text-lg w-full sm:w-auto animate-fade-in duration-700 delay-100">
               <Search className="mr-2 h-5 w-5" /> Search Properties
             </Button>
           </div>

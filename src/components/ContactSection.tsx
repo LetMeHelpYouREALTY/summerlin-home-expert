@@ -1,10 +1,49 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useState } from "react";
 
 const ContactSection = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setSuccess("");
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.subject ? `${form.subject}\n\n${form.message}` : form.message,
+        }),
+      });
+      if (res.ok) {
+        setSuccess("Thank you! Your message has been sent.");
+        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        const data = await res.json();
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -26,7 +65,7 @@ const ContactSection = () => {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Contact form */}
           <div className="lg:w-2/3 bg-gray-50 rounded-xl p-8">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-700">
@@ -36,6 +75,9 @@ const ContactSection = () => {
                     id="name" 
                     placeholder="Your name" 
                     className="bg-white border-gray-200"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -47,6 +89,9 @@ const ContactSection = () => {
                     type="email" 
                     placeholder="Your email" 
                     className="bg-white border-gray-200"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
@@ -60,6 +105,8 @@ const ContactSection = () => {
                     id="phone" 
                     placeholder="Your phone" 
                     className="bg-white border-gray-200"
+                    value={form.phone}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="space-y-2">
@@ -70,6 +117,8 @@ const ContactSection = () => {
                     id="subject" 
                     placeholder="How can I help you?" 
                     className="bg-white border-gray-200"
+                    value={form.subject}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -82,11 +131,15 @@ const ContactSection = () => {
                   id="message" 
                   placeholder="Tell me about your real estate needs" 
                   className="bg-white border-gray-200 min-h-[120px]"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
                 />
               </div>
-              
-              <Button className="bg-bhhs-navy hover:bg-bhhs-navy/90 text-white w-full">
-                Send Message
+              {success && <div className="text-green-600 font-medium text-center">{success}</div>}
+              {error && <div className="text-red-600 font-medium text-center">{error}</div>}
+              <Button className="bg-bhhs-navy hover:bg-bhhs-navy/90 text-white w-full" disabled={submitting}>
+                {submitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

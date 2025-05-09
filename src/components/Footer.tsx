@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
@@ -136,6 +135,19 @@ const Footer = () => {
           <p className="mt-4">
             Berkshire Hathaway HomeServices and the Berkshire Hathaway HomeServices symbol are registered service marks of Columbia Insurance Company, a Berkshire Hathaway affiliate.
           </p>
+          <div className="mt-6 text-center">
+            <span className="block text-base font-semibold text-[#3A8DDE]">Dr. Jan Duffy</span>
+            <span className="block text-sm text-white/80">REALTOR® License# S.0197614.LLC</span>
+            <span className="block text-sm text-white/80 mt-1">Let Me Help You Realtor</span>
+            <a
+              href="https://g.co/kgs/QzrV3cB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 text-[#3A8DDE] font-semibold underline hover:text-[#0A2540] transition-colors"
+            >
+              Learn more from satisfied clients
+            </a>
+          </div>
         </div>
       </div>
     </footer>
